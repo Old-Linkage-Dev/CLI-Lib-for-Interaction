@@ -42,40 +42,6 @@ CHR_DEL             = '\x7F';
 
 
 
-CHR_KEY_UP          = '\x1b[A';
-CHR_KEY_DOWN        = '\x1b[B';
-CHR_KEY_LEFT        = '\x1b[D';
-CHR_KEY_RIGHT       = '\x1b[C';
-
-CHR_KEY_BS          = '\x08';
-CHR_KEY_TAB         = '\x09';
-CHR_KEY_SP          = '\x20';
-CHR_KEY_DEL         = '\x7f';
-
-CHR_KEY_HOME        = '\x1b[1~';
-CHR_KEY_END         = '\x1b[4~';
-CHR_KEY_PGUP        = '\x1b[5~';
-CHR_KEY_PGDN        = '\x1b[6~';
-CHR_KEY_INS         = '\x1b[2~';
-
-CHR_KEY_F1          = '\x1b[11~';
-CHR_KEY_F2          = '\x1b[12~';
-CHR_KEY_F3          = '\x1b[13~';
-CHR_KEY_F4          = '\x1b[14~';
-CHR_KEY_F5          = '\x1b[15~';
-CHR_KEY_F6          = '\x1b[16~';
-
-CHR_KEY_F7          = '\x1b[18~';
-CHR_KEY_F8          = '\x1b[19~';
-CHR_KEY_F9          = '\x1b[20~';
-CHR_KEY_F10         = '\x1b[21~';
-CHR_KEY_F11         = '\x1b[23~';
-CHR_KEY_F12         = '\x1b[24~';
-
-CHR_KEY_ESC         = '\x1B';
-
-
-
 CHRS_C0 = (
     '\x00\x01\x02\x03\x04\x05\x06\x07'
     '\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F'
@@ -320,3 +286,37 @@ CHR_T_ENCIRC        = CHRf_CSI_SGR(51);
 CHR_T_UPLIN         = CHRf_CSI_SGR(52);
 CHR_T_DEFRMENC      = CHRf_CSI_SGR(53);
 CHR_T_DEUPLIN       = CHRf_CSI_SGR(54);
+
+
+
+CHR_KEY_UP          = '\x1b[A';
+CHR_KEY_DOWN        = '\x1b[B';
+CHR_KEY_LEFT        = '\x1b[D';
+CHR_KEY_RIGHT       = '\x1b[C';
+
+CHR_KEY_BS          = '\x08';
+CHR_KEY_TAB         = '\x09';
+CHR_KEY_SP          = '\x20';
+CHR_KEY_DEL         = '\x7f';
+
+CHR_KEY_HOME        = '\x1b[1~';
+CHR_KEY_END         = '\x1b[4~';
+CHR_KEY_PGUP        = '\x1b[5~';
+CHR_KEY_PGDN        = '\x1b[6~';
+CHR_KEY_INS         = '\x1b[2~';
+
+CHR_KEY_F1          = '\x1b[11~';
+CHR_KEY_F2          = '\x1b[12~';
+CHR_KEY_F3          = '\x1b[13~';
+CHR_KEY_F4          = '\x1b[14~';
+CHR_KEY_F5          = '\x1b[15~';
+CHR_KEY_F6          = '\x1b[16~';
+
+CHR_KEY_F7          = '\x1b[18~';
+CHR_KEY_F8          = '\x1b[19~';
+CHR_KEY_F9          = '\x1b[20~';
+CHR_KEY_F10         = '\x1b[21~';
+CHR_KEY_F11         = '\x1b[23~';
+CHR_KEY_F12         = '\x1b[24~';
+
+CHR_KEY_ESC         = '\x1B';
