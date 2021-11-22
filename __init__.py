@@ -13,7 +13,7 @@ from .CLIElem import *;
 from .CLIResLoad import *;
 from .CLIDraw import *;
 
-from .CLILog import logger;
+from ..OLDLog import logger;
 
 
 
