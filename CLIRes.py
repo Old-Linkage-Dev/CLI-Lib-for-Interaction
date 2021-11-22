@@ -7,7 +7,7 @@
 # 单个Res是一个独立的界面单位，应当可以在加载后通过其定义的接口与其他系统交互，并可对其内的内容完成自决；
 # 实现内容如，管理当前Res的若干Elem，对外接入接口并提供给Elem作为回调，或在内部实现可内部完成的回调；
 
-from .CLILog import logger;
+from ..OLDLog import logger;
 from .CONSTS import *;
 
 __all__ = [

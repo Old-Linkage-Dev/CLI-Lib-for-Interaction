@@ -10,7 +10,7 @@
 from . import CLIRes;
 from . import CLIElem;
 
-from .CLILog import logger;
+from ..OLDLog import logger;
 from .CONSTS import *;
 
 __all__ = [
