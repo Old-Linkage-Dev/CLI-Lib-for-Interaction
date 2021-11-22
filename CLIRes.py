@@ -15,7 +15,7 @@ class Res:
     A res is a page, a scene, an UI, etc;
     """
     
-    def __init__(self, h:int, w:int) -> None:
+    def __init__(self, h:int = 0, w:int = 0) -> None:
         """
         Init to the res;
         h, w: window / display size;
