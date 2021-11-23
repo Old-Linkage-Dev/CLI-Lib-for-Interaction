@@ -203,6 +203,22 @@ class BSElem(Elem):
         self._rect = (y, x, h, w);
         self._val = value;
         self._boxstyle = boxstyle;
+        if self._boxstyle == '-':
+            self._boxstyle_cc = '+';
+            self._boxstyle_ch = '-';
+            self._boxstyle_cv = '|';
+        elif self._boxstyle == '=':
+            self._boxstyle_cc = '#';
+            self._boxstyle_ch = '=';
+            self._boxstyle_cv = '|';
+        elif self._boxstyle == ' ':
+            self._boxstyle_cc = ' ';
+            self._boxstyle_ch = ' ';
+            self._boxstyle_cv = ' ';
+        elif self._boxstyle == '':
+            self._boxstyle_cc = '';
+            self._boxstyle_ch = '';
+            self._boxstyle_cv = '';
         self._colstyle = colorstyle;
     
     @property
@@ -216,7 +232,22 @@ class BSElem(Elem):
     def boxstyle(self, val:str) -> None:
         if val in ('-', '=', ' ', ''):
             self._boxstyle = val;
-        self._update_drawbox();
+            if self._boxstyle == '-':
+                self._boxstyle_cc = '+';
+                self._boxstyle_ch = '-';
+                self._boxstyle_cv = '|';
+            elif self._boxstyle == '=':
+                self._boxstyle_cc = '#';
+                self._boxstyle_ch = '=';
+                self._boxstyle_cv = '|';
+            elif self._boxstyle == ' ':
+                self._boxstyle_cc = ' ';
+                self._boxstyle_ch = ' ';
+                self._boxstyle_cv = ' ';
+            elif self._boxstyle == '':
+                self._boxstyle_cc = '';
+                self._boxstyle_ch = '';
+                self._boxstyle_cv = '';
         return;
     
     @property
