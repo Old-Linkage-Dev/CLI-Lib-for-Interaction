@@ -98,6 +98,56 @@ class Elem:
         return;
     
     @property
+    def y0(self) -> int:
+        """
+        The relative coordinate x0 of this elem;
+        """
+        return self._rect[0];
+    
+    @y0.setter
+    def y0(self, val:int) -> None:
+        self._rect = (val, self._rect[1], self._rect[2], self._rect[3]);
+        return;
+
+    @property
+    def x0(self) -> int:
+        """
+        The relative coordinate x0 of this elem;
+        """
+        return self._rect[1];
+    
+    @x0.setter
+    def x0(self, val:int) -> None:
+        self._rect = (self._rect[0], val, self._rect[2], self._rect[3]);
+        return;
+
+    @property
+    def y1(self) -> tuple:
+        """
+        The relative coordinate y1 of this elem;
+        """
+        return self._rect[0] + self._rect[2] - 1;
+    
+    @y1.setter
+    def y1(self, val:int) -> None:
+        if val >= self._rect[0]:
+            self._rect = (self._rect[0], self._rect[1], val - self._rect[0] + 1, self._rect[3]);
+        return;
+    
+    @property
+    def x1(self) -> tuple:
+        """
+        The relative coordinate x1 of this elem;
+        """
+        return self._rect[1] + self._rect[3] - 1;
+    
+    @x1.setter
+    def x1(self, val:int) -> None:
+        if val >= self._rect[1]:
+            self._rect = (self._rect[0], self._rect[1], self._rect[2], val - self._rect[1] + 1);
+        return;
+    
+    @property
     def value(self) -> any:
         """
         The value of this elem;
@@ -145,6 +195,10 @@ class BSElem(Elem):
         self.x = self._Elem.x;
         self.h = self._Elem.h;
         self.w = self._Elem.w;
+        self.y0 = self._Elem.y0;
+        self.x0 = self._Elem.x0;
+        self.y1 = self._Elem.y1;
+        self.x1 = self._Elem.x1;
         self.value = self._Elem.value;
         self._rect = (y, x, h, w);
         self._val = value;
@@ -189,6 +243,10 @@ class ElemLabel(Elem):
         self.x = self._super.x;
         self.h = self._super.h;
         self.w = self._super.w;
+        self.y0 = self._super.y0;
+        self.x0 = self._super.x0;
+        self.y1 = self._super.y1;
+        self.x1 = self._super.x1;
         self._rect = (y, x, 1, w);
         self._val = value;
         self._autoscale = autoscale;
