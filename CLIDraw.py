@@ -79,6 +79,27 @@ def str_split_return(s):
         _splt.append(_s);
     return _splt;
 
+def str_trim_width(s, p1, p2):
+    if p1 < p2:
+        _w = 0;
+        _i = 0;
+        _i1 = 0;
+        _i2 = 0;
+        while _i < len(s) and _w < p1:
+            _w += chr_width(s[_i]);
+            _i += 1;
+        _el = _w - p1;
+        _i1 = _i;
+        while _i < len(s) and _w < p2:
+            _er = p2 - _w;
+            _w += chr_width(s[_i]);
+            _i += 1;
+        _i2 = _i;
+        _s = ' ' * _el + s[_i1, _i2] + ' ' * _er;
+        return _s;
+    else:
+        return '';
+
 def str_al(s, w):
     if str_width(s) <= w:
         _e = w - str_width(s);
