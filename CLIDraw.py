@@ -79,7 +79,7 @@ def str_split_return(s):
         _splt.append(_s);
     return _splt;
 
-def str_trim_width(s, p1, p2):
+def str_trim_widthat(s, p1, p2):
     if p1 < p2:
         _w = 0;
         _i = 0;
