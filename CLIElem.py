@@ -259,13 +259,13 @@ class BSElem(Elem):
             _ehl = 0 if (self.x0 - 1 < 1) else 1;
             _ehr = 0 if (self.x1 + 1 > w) else 1;
             _ehc = min(self.x1, w) - max(self.x0, 1) + 1;
-            _y = max(self.y0 - 1, 1);
-            _x = max(self.x0 - 1, 1);
+            _y = y + max(self.y0 - 1, 1) - 1;
+            _x = y + max(self.x0 - 1, 1) - 1;
             _su = self._boxstyle_cc * _ehl + self._boxstyle_ch * _ehc + self._boxstyle_cc * _ehr;
             _sc = self._boxstyle_cv * _ehl + ' ' * _ehc + self._boxstyle_cv * _ehr
             _sd = self._boxstyle_cc * _ehl + self._boxstyle_ch * _ehc + self._boxstyle_cc * _ehr;
             _ss = [_su] * _evu + [_sc] * _evc + [_sd] * _evd;
-            _style = self._style["FOCUSED"] if f else self._style["NONACT"];
+            _style = self._colstyle["FOCUSED"] if f else self._colstyle["NONACT"];
             return putstrs(_y, _x, _ss, *_style);
 
 
