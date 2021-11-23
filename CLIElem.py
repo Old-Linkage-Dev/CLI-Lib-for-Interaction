@@ -200,8 +200,6 @@ class BSElem(Elem):
         self.y1 = self._Elem.y1;
         self.x1 = self._Elem.x1;
         self.value = self._Elem.value;
-        self._rect = (y, x, h, w);
-        self._val = value;
         self._boxstyle = boxstyle;
         self._boxstyle_cc = '';
         self._boxstyle_ch = '';
