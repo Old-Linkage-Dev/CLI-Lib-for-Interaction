@@ -154,15 +154,16 @@ class ElemText(Elem):
         self._update_drawraw();
     
     def _update_drawraw(self):
+        _s, _ = str_cut_return(self._val);
         if self._autoscale:
-            self._rect = (self._rect[0], self._rect[1], 1, str_width(str_cut_return(self._val)));
-            self._drawraw = str_cut_return(self._val);
+            self._rect = (self._rect[0], self._rect[1], 1, str_width(_s));
+            self._drawraw = _s;
         elif self._align == 'l':
-            self._drawraw = str_trim_al(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_al(_s, self.w);
         elif self._align == 'r':
-            self._drawraw = str_trim_ar(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_ar(_s, self.w);
         elif self._align == 'c':
-            self._drawraw = str_trim_ac(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_ac(_s, self.w);
         else:
             self._drawraw = '';
     
