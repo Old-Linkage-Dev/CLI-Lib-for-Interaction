@@ -17,7 +17,7 @@ from .CLIDraw import *;
 
 __all__ = [
     "Elem",
-    "ElemText",
+    "BSElem",
 ];
 
 
