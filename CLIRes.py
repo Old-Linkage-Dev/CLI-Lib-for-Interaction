@@ -28,7 +28,7 @@ class Res:
         """
         self._elems = {};
         self._focus = -1;
-        self._winsize = (h, w);
+        self._ressize = (h, w);
         return;
     
     @property
@@ -46,15 +46,15 @@ class Res:
         return self._focus;
     
     @property
-    def winsize(self) -> tuple:
+    def ressize(self) -> tuple:
         """
         The window / display size of this res;
         """
-        return self._winsize;
+        return self._ressize;
     
-    @winsize.setter
-    def winsize(self, val:tuple) -> None:
-        self._winsize = val;
+    @ressize.setter
+    def ressize(self, val:tuple) -> None:
+        self._ressize = val;
         return;
     
     def update(self, input:str) -> None:
