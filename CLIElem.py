@@ -9,7 +9,7 @@
 
 
 
-from ..OLDLog import logger
+from ..OLDLog import logger;
 from .CONSTS import *;
 from .CLIDraw import *;
 
