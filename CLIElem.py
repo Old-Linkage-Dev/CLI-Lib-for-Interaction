@@ -18,6 +18,7 @@ from .CLIDraw import *;
 __all__ = [
     "Elem",
     "BSElem",
+    "ElemLabel",
 ];
 
 
@@ -270,7 +271,9 @@ class BSElem(Elem):
 
 
 
-
+class ElemLabel(BSElem):
+    
+    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: str = '', align: str = 'l', autoscale: bool = False, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
         self._BSElem = super();
         self._BSElem.__init__(y = y, x = x, h = 1, w = w, value = value, boxstyle = boxstyle, colorstyle = colorstyle);
         self._rect = (y, x, 1, w);
@@ -296,6 +299,18 @@ class BSElem(Elem):
         else:
             self._drawraw = '';
     
+    @property
+    def rect(self) -> tuple:
+        """
+        The relative coordinate of this elem;
+        """
+        return self._rect;
+    
+    @rect.setter
+    def rect(self, val:tuple) -> None:
+        self._rect = (val[0], val[1], 1, val[3]);
+        return;
+
     @property
     def value(self) -> str:
         """
@@ -334,18 +349,19 @@ class BSElem(Elem):
         return;
 
     def draw(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, f:bool = False) -> str:
+        _s0 = self._BSElem.draw(y, x, h, w, f);
         if (
-            (y + h - 1 < self.y) or
-            (y > self.y + self.h - 1) or
-            (x + w - 1 < self.x) or
-            (x > self.x + self.w - 1)
+            (self.x1 < 1) or
+            (self.x0 > w) or
+            (self.y1 < 1) or
+            (self.y0 > h)
         ):
-            return '';
+            return _s0;
         else:
-            _pl = 0 if (x <= self.x) else (x - self.x);
-            _pr = self.w if (x + w >= self.x + self.w) else (x + w -self.x);
-            _x = (self.x - x + 1) if (x <= self.x) else 1;
-            _y = (self.y - y + 1) if (y <= self.y) else 1;
+            _pl = 0 if (self.x0 >= 1) else (1 - self.x0);
+            _pr = self.w if (self.x1 <= w) else (w - self.x0 + 1);
+            _y = y + max(self.y0, 1) - 1;
+            _x = y + max(self.x0, 1) - 1;
             _s = str_trim_at(self._drawraw, _pl, _pr);
-            _style = self._style["FOCUSED"] if f else self._style["NONACT"];
-            return putstr(_y, _x, _s, *_style);
+            _style = self._colstyle["FOCUSED"] if f else self._colstyle["NONACT"];
+            return _s0 + putstr(_y, _x, _s, *_style);
