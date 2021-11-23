@@ -17,6 +17,7 @@ from .CLIDraw import *;
 
 __all__ = [
     "Elem",
+    "ElemText",
 ];
 
 
@@ -131,3 +132,85 @@ class Elem:
         return the string to draw the elem;
         """
         return '';
+
+class ElemText(Elem):
+    
+    def __init__(self, y: int = 0, x: int = 0, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = get_style(STYLE_CLASSIC)) -> None:
+        super().__init__(y=y, x=x, h=1, w=w, value=value);
+        self.rect = super().rect;
+        self.y = super().y;
+        self.x = super().x;
+        self.h = super().h;
+        self.w = super().w;
+        self._rect = (y, x, 1, w);
+        self._val = value;
+        self._style = colorstyle;
+        self._autoscale = autoscale;
+        if align in ('l', 'c', 'r'):
+            self._align = align;
+        else:
+            self._align = 'l';
+        if self._autoscale:
+            self._rect = (self._rect[0], self._rect[1], 1, str_width(self._val));
+            self._drawraw = self._val;
+        elif self._align == 'l':
+            self._drawraw = str_al(self._val, self._rect[3]);
+        elif self._align == 'r':
+            self._drawraw = str_ar(self._val, self._rect[3]);
+        elif self._align == 'c':
+            self._drawraw = str_ac(self._val, self._rect[3]);
+        else:
+            self._drawraw = '';
+    
+    @property
+    def value(self) -> str:
+        """
+        The string of this elem;
+        """
+        return self._val;
+    
+    @value.setter
+    def value(self, val:str) -> None:
+        self._val = val;
+        if self._autoscale:
+            self._rect = (self._rect[0], self._rect[1], 1, str_width(self._val));
+            self._drawraw = self._val;
+        elif self._align == 'l':
+            self._drawraw = str_al(self._val, self._rect[3]);
+        elif self._align == 'r':
+            self._drawraw = str_ar(self._val, self._rect[3]);
+        elif self._align == 'c':
+            self._drawraw = str_ac(self._val, self._rect[3]);
+        else:
+            self._drawraw = '';
+        return;
+    
+    @property
+    def align(self) -> str:
+        """
+        The alignment of the string of this elem;
+        """
+        return self._align;
+    
+    @align.setter
+    def align(self, val:str) -> None:
+        if val in ('l', 'c', 'r'):
+            self._align = val;
+        if self._autoscale:
+            pass;
+        elif self._align == 'l':
+            self._drawraw = str_al(self._val, self._rect[3]);
+        elif self._align == 'r':
+            self._drawraw = str_ar(self._val, self._rect[3]);
+        elif self._align == 'c':
+            self._drawraw = str_ac(self._val, self._rect[3]);
+        else:
+            self._drawraw = '';
+        return;
+    
+    def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
+        
+        if h < self.h:
+            return '';
+        else:
+            return '';
