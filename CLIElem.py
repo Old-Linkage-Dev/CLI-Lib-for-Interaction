@@ -58,7 +58,7 @@ class Elem:
     
     @y.setter
     def y(self, val:int) -> None:
-        self._rect = (val, self._rect[1], self._rect[2], self._rect[3]);
+        self.rect = (val, self._rect[1], self._rect[2], self._rect[3]);
         return;
     
     @property
@@ -70,7 +70,7 @@ class Elem:
     
     @x.setter
     def x(self, val:int) -> None:
-        self._rect = (self._rect[0], val, self._rect[2], self._rect[3]);
+        self.rect = (self._rect[0], val, self._rect[2], self._rect[3]);
         return;
     
     @property
@@ -82,7 +82,7 @@ class Elem:
     
     @h.setter
     def h(self, val:int) -> None:
-        self._rect = (self._rect[0], self._rect[1], val, self._rect[3]);
+        self.rect = (self._rect[0], self._rect[1], val, self._rect[3]);
         return;
     
     @property
@@ -94,7 +94,7 @@ class Elem:
     
     @w.setter
     def w(self, val:int) -> None:
-        self._rect = (self._rect[0], self._rect[1], self._rect[2], val);
+        self.rect = (self._rect[0], self._rect[1], self._rect[2], val);
         return;
     
     @property
@@ -106,7 +106,7 @@ class Elem:
     
     @y0.setter
     def y0(self, val:int) -> None:
-        self._rect = (val, self._rect[1], self._rect[2], self._rect[3]);
+        self.rect = (val, self._rect[1], self._rect[2], self._rect[3]);
         return;
 
     @property
@@ -118,7 +118,7 @@ class Elem:
     
     @x0.setter
     def x0(self, val:int) -> None:
-        self._rect = (self._rect[0], val, self._rect[2], self._rect[3]);
+        self.rect = (self._rect[0], val, self._rect[2], self._rect[3]);
         return;
 
     @property
@@ -131,7 +131,7 @@ class Elem:
     @y1.setter
     def y1(self, val:int) -> None:
         if val >= self._rect[0]:
-            self._rect = (self._rect[0], self._rect[1], val - self._rect[0] + 1, self._rect[3]);
+            self.rect = (self._rect[0], self._rect[1], val - self._rect[0] + 1, self._rect[3]);
         return;
     
     @property
@@ -144,7 +144,7 @@ class Elem:
     @x1.setter
     def x1(self, val:int) -> None:
         if val >= self._rect[1]:
-            self._rect = (self._rect[0], self._rect[1], self._rect[2], val - self._rect[1] + 1);
+            self.rect = (self._rect[0], self._rect[1], self._rect[2], val - self._rect[1] + 1);
         return;
     
     @property
