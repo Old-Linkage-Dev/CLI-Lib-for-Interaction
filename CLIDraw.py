@@ -25,6 +25,7 @@ __all__ = [
     "str_trim_al",
     "str_trim_ar",
     "str_trim_ac",
+    "putstr",
     "STYLE_CLASSIC",
 ];
 
@@ -130,6 +131,9 @@ def str_trim_ac(s, w):
         s, _ = str_cut_width(s, w);
         _e = w - str_width(s);
         return s + ' ' * _e;
+
+def putstr(y, x, s ,*args):
+    return CHRf_CSI_CUP(y, x) + CHRf_CSI_SGR(0, *args) + s;
 
 STYLE_CLASSIC = {
     "NORMAL" : [T_BBLACK, T_BLBLACK, T_WHITE, T_LWHITE],
