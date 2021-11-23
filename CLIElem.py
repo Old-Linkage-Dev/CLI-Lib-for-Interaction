@@ -273,7 +273,7 @@ class BSElem(Elem):
 
 class ElemLabel(BSElem):
     
-    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: str = '', align: str = 'l', autoscale: bool = False, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
+    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: str = '', align: str = 'l', autoscale: bool = True, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
         self._BSElem = super();
         self._BSElem.__init__(y = y, x = x, h = 1, w = w, value = value, boxstyle = boxstyle, colorstyle = colorstyle);
         self._rect = (y, x, 1, w);
