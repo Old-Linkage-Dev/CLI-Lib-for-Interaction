@@ -223,7 +223,7 @@ class ElemText(Elem):
             return '';
         else:
             _pl = 0 if (x <= self.x) else (x - self.x);
-            _pr = 0 if (x + w >= self.x + self.w) else (x + w -self.x);
+            _pr = self.w if (x + w >= self.x + self.w) else (x + w -self.x);
             _x = (self.x - x + 1) if (x <= self.x) else 1;
             _y = (self.y - y + 1) if (y <= self.y) else 1;
             _s = str_trim_at(self._drawraw, _pl, _pr);
