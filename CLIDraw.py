@@ -7,7 +7,25 @@
 # 实现内容如，给定一个绘制内容、字体信息、绘制位置、绘制范围，返回一个在指定范围内、指定位置进行绘制的字符串；
 # 绘制应当采用CSI转义串进行光标、字体等的处理；
 
+import math;
+
+from .CONSTS import *;
+
+
+
 __all__ = [
+    "chr_width",
+    "str_rev",
+    "str_width",
+    "str_cut_width",
+    "str_cut_return",
+    "str_split_width",
+    "str_split_return",
+    "str_al",
+    "str_ar",
+    "str_ac",
+    "get_style",
+    "STYLE_CLASSIC",
 ];
 
 def chr_width(c):
