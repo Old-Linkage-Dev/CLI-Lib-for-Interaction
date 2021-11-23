@@ -371,3 +371,94 @@ class ElemLabel(BSElem):
             _s = str_trim_at(self._drawraw, _pl, _pr);
             _style = self._colstyle["FOCUSED"] if f else self._colstyle["NONACT"];
             return _s0 + putstr(_y, _x, _s, *_style);
+
+
+
+class ElemCmage(BSElem):
+    
+    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: list = [], autoscale: bool = True, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
+        self._BSElem = super();
+        self._BSElem.__init__(y = y, x = x, h = 1, w = w, value = value, boxstyle = boxstyle, colorstyle = colorstyle);
+        self._rect = (y, x, 1, w);
+        self._autoscale = autoscale;
+        self._drawraws = [];
+        self._update_drawraws();
+    
+    def _update_drawraws(self):
+        if self._autoscale:
+            _dw = str_width(self._val[0]) if len(self._val) > 0 else 0;
+            _dh = len(self._val);
+            self._drawraws = self._val;
+            self._rect = (self._rect[0], self._rect[1], _dh, _dw);
+        else:
+            self._drawraws = [];
+            for _line in self._val:
+                _s = str_trim_al(_line, self._rect[3]);
+                self._drawraws.append(_s);
+            if len(self._drawraws) >= self._rect[2]:
+                self._drawraws = self._drawraws[:self._rect[2]];
+            else:
+                self._drawraws += [' ' * self._rect[3]] * (self._rect[2] - len(self._drawraws));
+        return;
+    
+    @property
+    def rect(self) -> tuple:
+        """
+        The relative coordinate of this elem;
+        """
+        return self._rect;
+    
+    @rect.setter
+    def rect(self, val:tuple) -> None:
+        if self._autoscale:
+            _dw = str_width(self._drawraws[0]) if len(self._drawraws) > 0 else 0;
+            _dh = len(self._drawraws);
+            self._rect = (val[0], val[1], _dh, _dw);
+        else:
+            self._rect = val;
+            self._update_drawraws();
+        return;
+    
+    @property
+    def value(self) -> str:
+        """
+        The string of this elem;
+        """
+        return self._val;
+    
+    @value.setter
+    def value(self, val:str) -> None:
+        self._val = val;
+        self._update_drawraws();
+        return;
+    
+    @property
+    def autoscale(self) -> bool:
+        return self._autoscale;
+    
+    @autoscale.setter
+    def autoscale(self, val:bool) -> None:
+        self._autoscale = val;
+        if self._autoscale:
+            self._update_drawraw();
+        return;
+
+    def draw(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, f:bool = False) -> str:
+        _s0 = self._BSElem.draw(y, x, h, w, f);
+        if (
+            (self.x1 < 1) or
+            (self.x0 > w) or
+            (self.y1 < 1) or
+            (self.y0 > h)
+        ):
+            return _s0;
+        else:
+            _pu = 0 if (self.y1 >= 1) else (1 - self.y0);
+            _pl = 0 if (self.x0 >= 1) else (1 - self.x0);
+            _pd = self.h if (self.y1 <= h) else (h - self.y0 + 1);
+            _pr = self.w if (self.x1 <= w) else (w - self.x0 + 1);
+            _y = y + max(self.y0, 1) - 1;
+            _x = y + max(self.x0, 1) - 1;
+            _ss = [str_trim_at(_line, _pl, _pr) for _line in self._drawraw];
+            _style = self._colstyle["FOCUSED"] if f else self._colstyle["NONACT"];
+            return _s0 + putstrs(_y, _x, _ss, *_style);
