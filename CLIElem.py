@@ -261,6 +261,33 @@ class BSElem(Elem):
     def colorstyle(self, val:dict) -> None:
         self._colstyle = val;
         return;
+    
+    def draw(self, y: int = 1, x: int = 1, h: int = 0, w: int = 0, f: bool = False) -> str:
+        if self._boxstyle == '':
+            return '';
+        elif (
+            (self.x1 + 1 < 1) or
+            (self.x0 - 1 > w) or
+            (self.y1 + 1 < 1) or
+            (self.y0 - 1 > h)
+        ):
+            return '';
+        else:
+            _evu = 0 if (self.y0 - 1 < 1) else 1;
+            _evd = 0 if (self.y1 + 1 > h) else 1;
+            _evc = min(self.y1, w) - max(self.y0, 1) + 1;
+            _ehl = 0 if (self.x0 - 1 < 1) else 1;
+            _ehr = 0 if (self.x1 + 1 > w) else 1;
+            _ehc = min(self.x1, w) - max(self.x0, 1) + 1;
+            _y = max(self.y0 - 1, 1);
+            _x = max(self.x0 - 1, 1);
+            _su = self._boxstyle_cc * _ehl + self._boxstyle_ch * _ehc + self._boxstyle_cc * _ehr;
+            _sc = self._boxstyle_cv * _ehl + ' ' * _ehc + self._boxstyle_cv * _ehr
+            _sd = self._boxstyle_cc * _ehl + self._boxstyle_ch * _ehc + self._boxstyle_cc * _ehr;
+            _ss = [_su] * _evu + [_sc] * _evc + [_sd] * _evd;
+            _style = self._style["FOCUSED"] if f else self._style["NONACT"];
+            return putstrs(_y, _x, _ss, *_style);
+
 
 
 
