@@ -193,6 +193,25 @@ class ElemText(Elem):
         self._update_drawraw();
         return;
     
+    @property
+    def autoscale(self) -> bool:
+        return self._autoscale;
+    
+    @autoscale.setter
+    def autoscale(self, val:bool) -> None:
+        self._autoscale = val;
+        self._update_drawraw();
+        return;
+
+    @property
+    def colorstyle(self) -> dict:
+        return self._style;
+    
+    @colorstyle.setter
+    def colorstyle(self, val:dict) -> None:
+        self._style = val;
+        return;
+
     def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
         
         if h < self.h:
