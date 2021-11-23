@@ -203,6 +203,13 @@ class BSElem(Elem):
         self._rect = (y, x, h, w);
         self._val = value;
         self._boxstyle = boxstyle;
+        self._boxstyle_cc = '';
+        self._boxstyle_ch = '';
+        self._boxstyle_cv = '';
+        self._update_boxstyle();
+        self._colstyle = colorstyle;
+    
+    def _update_boxstyle(self):
         if self._boxstyle == '-':
             self._boxstyle_cc = '+';
             self._boxstyle_ch = '-';
@@ -219,8 +226,8 @@ class BSElem(Elem):
             self._boxstyle_cc = '';
             self._boxstyle_ch = '';
             self._boxstyle_cv = '';
-        self._colstyle = colorstyle;
-    
+        return;
+
     @property
     def boxstyle(self) -> str:
         """
@@ -232,22 +239,7 @@ class BSElem(Elem):
     def boxstyle(self, val:str) -> None:
         if val in ('-', '=', ' ', ''):
             self._boxstyle = val;
-            if self._boxstyle == '-':
-                self._boxstyle_cc = '+';
-                self._boxstyle_ch = '-';
-                self._boxstyle_cv = '|';
-            elif self._boxstyle == '=':
-                self._boxstyle_cc = '#';
-                self._boxstyle_ch = '=';
-                self._boxstyle_cv = '|';
-            elif self._boxstyle == ' ':
-                self._boxstyle_cc = ' ';
-                self._boxstyle_ch = ' ';
-                self._boxstyle_cv = ' ';
-            elif self._boxstyle == '':
-                self._boxstyle_cc = '';
-                self._boxstyle_ch = '';
-                self._boxstyle_cv = '';
+            self._update_boxstyle();
         return;
     
     @property
