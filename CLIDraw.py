@@ -25,7 +25,6 @@ __all__ = [
     "str_trim_al",
     "str_trim_ar",
     "str_trim_ac",
-    "get_style",
     "STYLE_CLASSIC",
 ];
 
@@ -132,53 +131,9 @@ def str_trim_ac(s, w):
         _e = w - str_width(s);
         return s + ' ' * _e;
 
-def get_style(style:dict):
-    class _Style:
-        @property
-        def NRM(self):
-            _b = style["B_NRM"];
-            _f = style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def OBJ(self):
-            _b = style["B_OBJ"] if "B_OBJ" in style else style["B_NRM"];
-            _f = style["F_OBJ"] if "F_OBJ" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def OBJSIDE(self):
-            _b = style["B_OBS"] if "B_OBS" in style else style["B_OBJ"] if "B_OBJ" in style else style["B_NRM"];
-            _f = style["F_OBS"] if "F_OBS" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def ACT(self):
-            _b = style["B_ACT"] if "B_ACT" in style else style["B_NRM"];
-            _f = style["F_ACT"] if "F_ACT" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def ACTSIDE(self):
-            _b = style["B_ACS"] if "B_ACS" in style else style["B_ACT"] if "B_ACT" in style else style["B_NRM"];
-            _f = style["F_ACS"] if "F_ACS" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def FOC(self):
-            _b = style["B_FOC"] if "B_FOC" in style else style["B_NRM"];
-            _f = style["F_FOC"] if "F_FOC" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-        @property
-        def FOCSIDE(self):
-            _b = style["B_FOS"] if "B_FOS" in style else style["B_FOC"] if "B_FOC" in style else style["B_NRM"];
-            _f = style["F_FOS"] if "F_FOS" in style else style["F_NRM"];
-            return CHRf_CSI_SGR(0, *_b, *_f);
-    return _Style();
-
 STYLE_CLASSIC = {
-    "B_NRM" : [T_BBLACK, T_BLBLACK],
-    "F_NRM" : [T_WHITE, T_LWHITE],
-    "B_OBJ" : [T_BBLACK, T_BLBLACK],
-    "F_OBJ" : [T_CYAN, T_LCYAN],
-    "B_ACT" : [T_BBLUE, T_BLBLUE],
-    "F_ACT" : [T_CYAN, T_LCYAN],
-    "B_FOC" : [T_BCYAN, T_BLCYAN],
-    "F_FOC" : [T_BLACK, T_LBLACK],
-    "F_FOS" : [T_BLACK, T_LBLACK],
+    "NORMAL" : [T_BBLACK, T_BLBLACK, T_WHITE, T_LWHITE],
+    "NONACT" : [T_BBLUE, T_BLBLUE, T_WHITE, T_LWHITE],
+    "INTERACT" : [T_BBLUE, T_BLBLUE, T_CYAN, T_LCYAN],
+    "FOCUSED" : [T_BCYAN, T_BLCYAN, T_BLUE, T_LBLUE],
 }
