@@ -158,11 +158,11 @@ class ElemText(Elem):
             self._rect = (self._rect[0], self._rect[1], 1, str_width(str_cut_return(self._val)));
             self._drawraw = str_cut_return(self._val);
         elif self._align == 'l':
-            self._drawraw = str_al(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_al(str_cut_return(self._val), self.w);
         elif self._align == 'r':
-            self._drawraw = str_ar(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_ar(str_cut_return(self._val), self.w);
         elif self._align == 'c':
-            self._drawraw = str_ac(str_cut_return(self._val), self.w);
+            self._drawraw = str_trim_ac(str_cut_return(self._val), self.w);
         else:
             self._drawraw = '';
     
