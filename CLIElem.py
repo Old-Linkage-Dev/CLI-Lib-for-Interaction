@@ -213,8 +213,17 @@ class ElemText(Elem):
         return;
 
     def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
-        
-        if h < self.h:
+        if (
+            (y + h - 1 < self.y) or
+            (y > self.y + self.h - 1) or
+            (x + w - 1 < self.x) or
+            (x > self.x + self.w - 1)
+        ):
             return '';
         else:
-            return '';
+            _pl = 0 if (x <= self.x) else (x - self.x);
+            _pr = 0 if (x + w >= self.x + self.w) else (x + w -self.x);
+            _x = (self.x - x + 1) if (x <= self.x) else 1;
+            _y = (self.y - y + 1) if (y <= self.y) else 1;
+            _s = str_trim_at(self._drawraw, _pl, _pr);
+            return putstr(_y, _x, _s, *self._style["NONACT"]);
