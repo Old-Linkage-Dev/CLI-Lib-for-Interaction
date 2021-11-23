@@ -227,4 +227,5 @@ class ElemLabel(Elem):
             _x = (self.x - x + 1) if (x <= self.x) else 1;
             _y = (self.y - y + 1) if (y <= self.y) else 1;
             _s = str_trim_at(self._drawraw, _pl, _pr);
-            return putstr(_y, _x, _s, *self._style["NONACT"]);
+            _style = self._style["FOCUSED"] if f else self._style["NONACT"];
+            return putstr(_y, _x, _s, *_style);
