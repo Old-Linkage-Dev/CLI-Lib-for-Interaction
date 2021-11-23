@@ -133,7 +133,7 @@ class Elem:
         """
         return '';
 
-class ElemText(Elem):
+class ElemLabel(Elem):
     
     def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = STYLE_CLASSIC) -> None:
         self._super = super();
