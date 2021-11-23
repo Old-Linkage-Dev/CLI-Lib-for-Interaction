@@ -135,7 +135,7 @@ class Elem:
 
 class ElemText(Elem):
     
-    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = get_style(STYLE_CLASSIC)) -> None:
+    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = STYLE_CLASSIC) -> None:
         self._super = super();
         self._super.__init__(y=y, x=x, h=1, w=w, value=value);
         self.rect = self._super.rect;
@@ -145,8 +145,8 @@ class ElemText(Elem):
         self.w = self._super.w;
         self._rect = (y, x, 1, w);
         self._val = value;
-        self._style = colorstyle;
         self._autoscale = autoscale;
+        self._style = colorstyle;
         if align in ('l', 'c', 'r'):
             self._align = align;
         else:
