@@ -173,7 +173,7 @@ class Elem:
         """
         return;
     
-    def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
+    def draw(self, y: int = 1, x: int = 1, h: int = 0, w: int = 0, f: bool = False) -> str:
         """
         Called to get the draw flow of the elem;
         y, x: absolute coordinate to draw of this elem;
