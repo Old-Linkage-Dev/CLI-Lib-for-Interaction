@@ -309,7 +309,11 @@ class ElemLabel(BSElem):
     
     @rect.setter
     def rect(self, val:tuple) -> None:
-        self._rect = (val[0], val[1], 1, val[3]);
+        if self._autoscale:
+            self._rect = (val[0], val[1], 1, str_width(self._drawraw));
+        else:
+            self._rect = (val[0], val[1], 1, val[3]);
+            self._update_drawraw();
         return;
 
     @property
@@ -346,7 +350,8 @@ class ElemLabel(BSElem):
     @autoscale.setter
     def autoscale(self, val:bool) -> None:
         self._autoscale = val;
-        self._update_drawraw();
+        if self._autoscale:
+            self._update_drawraw();
         return;
 
     def draw(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, f:bool = False) -> str:
