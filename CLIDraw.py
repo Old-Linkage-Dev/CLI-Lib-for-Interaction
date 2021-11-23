@@ -80,19 +80,19 @@ def str_split_return(s):
         _splt.append(_s);
     return _splt;
 
-def str_trim_at(s, p1, p2):
-    if p1 < p2:
+def str_trim_at(s, pl, pr):
+    if pl < pr:
         _w = 0;
         _i = 0;
         _i1 = 0;
         _i2 = 0;
-        while _i < len(s) and _w < p1:
+        while _i < len(s) and _w < pl:
             _w += chr_width(s[_i]);
             _i += 1;
-        _el = _w - p1;
+        _el = _w - pl;
         _i1 = _i;
-        while _i < len(s) and _w < p2:
-            _er = p2 - _w;
+        while _i < len(s) and _w < pr:
+            _er = pr - _w;
             _w += chr_width(s[_i]);
             _i += 1;
         _i2 = _i;
