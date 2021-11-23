@@ -133,6 +133,52 @@ class Elem:
         """
         return '';
 
+
+
+class BSElem(Elem):
+
+    def __init__(self, y: int = 1, x: int = 1, h: int = 0, w: int = 0, value: any = None, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
+        self._Elem = super();
+        self._Elem.__init__(y = y, x = x, h = h, w = w, value = value);
+        self.rect = self._Elem.rect;
+        self.y = self._Elem.y;
+        self.x = self._Elem.x;
+        self.h = self._Elem.h;
+        self.w = self._Elem.w;
+        self.value = self._Elem.value;
+        self._rect = (y, x, h, w);
+        self._val = value;
+        self._boxstyle = boxstyle;
+        self._colstyle = colorstyle;
+    
+    @property
+    def boxstyle(self) -> str:
+        """
+        The box style of this elem;
+        """
+        return self._boxstyle;
+    
+    @boxstyle.setter
+    def boxstyle(self, val:str) -> None:
+        if val in ('-', '=', ' ', ''):
+            self._boxstyle = val;
+        self._update_drawbox();
+        return;
+    
+    @property
+    def colorstyle(self) -> dict:
+        """
+        The color style of this elem;
+        """
+        return self._colstyle;
+    
+    @colorstyle.setter
+    def colorstyle(self, val:dict) -> None:
+        self._colstyle = val;
+        return;
+
+
+
 class ElemLabel(Elem):
     
     def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: str = '', align: str = 'l', autoscale: bool = False, colorstyle: dict = STYLE_CLASSIC) -> None:
