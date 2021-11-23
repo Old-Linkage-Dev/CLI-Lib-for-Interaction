@@ -212,7 +212,7 @@ class ElemText(Elem):
         self._style = val;
         return;
 
-    def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
+    def draw(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, f:bool = False) -> str:
         if (
             (y + h - 1 < self.y) or
             (y > self.y + self.h - 1) or
