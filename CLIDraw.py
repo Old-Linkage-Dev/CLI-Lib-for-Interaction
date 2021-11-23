@@ -91,12 +91,15 @@ def str_trim_at(s, pl, pr):
             _i += 1;
         _el = _w - pl;
         _i1 = _i;
+        _er = 0;
         while _i < len(s) and _w < pr:
             _er = pr - _w;
             _w += chr_width(s[_i]);
             _i += 1;
+        if _w == pr:
+            _er = 0;
         _i2 = _i;
-        _s = ' ' * _el + s[_i1, _i2] + ' ' * _er;
+        _s = ' ' * _el + s[_i1 : _i2] + ' ' * _er;
         return _s;
     else:
         return '';
