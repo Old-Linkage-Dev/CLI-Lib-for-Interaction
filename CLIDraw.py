@@ -26,6 +26,7 @@ __all__ = [
     "str_trim_ar",
     "str_trim_ac",
     "putstr",
+    "putstrs",
     "STYLE_CLASSIC",
 ];
 
@@ -136,7 +137,14 @@ def str_trim_ac(s, w):
         return s + ' ' * _e;
 
 def putstr(y, x, s ,*args):
-    return CHRf_CSI_CUP(y, x) + CHRf_CSI_SGR(0, *args) + s;
+    _s = CHRf_CSI_SGR(0, *args) + CHRf_CSI_CUP(y, x) + s;
+    return _s;
+
+def putstrs(y, x, ss, *args):
+    _s = CHRf_CSI_SGR(0, *args);
+    for _i in range(len(ss)):
+        _s += CHRf_CSI_CUP(y + _i, x) + ss[_i];
+    return _s;
 
 STYLE_CLASSIC = {
     "NORMAL"    : [T_BBLACK, T_WHITE],
