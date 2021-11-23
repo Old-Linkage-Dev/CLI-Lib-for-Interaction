@@ -19,6 +19,7 @@ __all__ = [
     "Elem",
     "BSElem",
     "ElemLabel",
+    "ElemCmage",
 ];
 
 
@@ -459,6 +460,6 @@ class ElemCmage(BSElem):
             _pr = self.w if (self.x1 <= w) else (w - self.x0 + 1);
             _y = y + max(self.y0, 1) - 1;
             _x = y + max(self.x0, 1) - 1;
-            _ss = [str_trim_at(_line, _pl, _pr) for _line in self._drawraw];
+            _ss = [str_trim_at(_line, _pl, _pr) for _line in self._drawraws];
             _style = self._colstyle["FOCUSED"] if f else self._colstyle["NONACT"];
             return _s0 + putstrs(_y, _x, _ss, *_style);
