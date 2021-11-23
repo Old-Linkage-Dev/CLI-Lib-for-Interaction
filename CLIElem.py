@@ -201,13 +201,13 @@ class BSElem(Elem):
         self.x1 = self._Elem.x1;
         self.value = self._Elem.value;
         self._boxstyle = boxstyle;
+        self._colstyle = colorstyle;
         self._boxstyle_cc = '';
         self._boxstyle_ch = '';
         self._boxstyle_cv = '';
-        self._update_boxstyle();
-        self._colstyle = colorstyle;
+        self._update_style();
     
-    def _update_boxstyle(self):
+    def _update_style(self):
         if self._boxstyle == '-':
             self._boxstyle_cc = '+';
             self._boxstyle_ch = '-';
@@ -237,7 +237,7 @@ class BSElem(Elem):
     def boxstyle(self, val:str) -> None:
         if val in ('-', '=', ' ', ''):
             self._boxstyle = val;
-            self._update_boxstyle();
+            self._update_style();
         return;
     
     @property
