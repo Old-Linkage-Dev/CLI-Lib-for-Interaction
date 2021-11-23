@@ -28,6 +28,8 @@ __all__ = [
     "putstr",
     "putstrs",
     "STYLE_CLASSIC",
+    "STYLE_CLASSIC_LIGHT",
+    "STYLE_BLACKWHITE",
 ];
 
 def chr_width(c):
@@ -158,4 +160,11 @@ STYLE_CLASSIC_LIGHT = {
     "NONACT"    : [T_BLBLUE, T_LWHITE],
     "INTERACT"  : [T_BLBLUE, T_LCYAN],
     "FOCUSED"   : [T_BLCYAN, T_LBLUE],
+}
+
+STYLE_BLACKWHITE = {
+    "NORMAL"    : [T_BBLACK, T_WHITE],
+    "NONACT"    : [T_BLBLACK, T_WHITE],
+    "INTERACT"  : [T_BLBLACK, T_LWHITE],
+    "FOCUSED"   : [T_BWHITE, T_LBLACK],
 }
