@@ -10,4 +10,12 @@
 __all__ = [
 ];
 
+def chr_width(c):
+    if c == CHR_SO or c == CHR_SI:
+        return 0
+    for _u, _w in WIDTH_CHR:
+        if ord(c) <= _u:
+            return _w;
+    return 1;
+
 
