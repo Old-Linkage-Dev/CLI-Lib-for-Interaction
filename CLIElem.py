@@ -151,6 +151,7 @@ class ElemLabel(Elem):
             self._align = align;
         else:
             self._align = 'l';
+        self._drawraw = '';
         self._update_drawraw();
     
     def _update_drawraw(self):
