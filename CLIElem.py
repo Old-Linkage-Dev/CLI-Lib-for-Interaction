@@ -27,7 +27,7 @@ class Elem:
     An elem is an element on a page, a scene, an UI, etc;
     """
 
-    def __init__(self, y:int = 0, x:int = 0, h:int = 0, w:int = 0, value:any = None) -> None:
+    def __init__(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, value:any = None) -> None:
         """
         Init to the elem;
         y, x: relative coordinate of this elem;
@@ -135,7 +135,7 @@ class Elem:
 
 class ElemText(Elem):
     
-    def __init__(self, y: int = 0, x: int = 0, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = get_style(STYLE_CLASSIC)) -> None:
+    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = get_style(STYLE_CLASSIC)) -> None:
         self._super = super();
         self._super.__init__(y=y, x=x, h=1, w=w, value=value);
         self.rect = self._super.rect;
