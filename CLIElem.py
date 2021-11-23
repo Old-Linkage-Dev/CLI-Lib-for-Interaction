@@ -136,12 +136,13 @@ class Elem:
 class ElemText(Elem):
     
     def __init__(self, y: int = 0, x: int = 0, h: int = 1, w: int = 0, value:str = '', align = 'l', autoscale = False, colorstyle = get_style(STYLE_CLASSIC)) -> None:
-        super().__init__(y=y, x=x, h=1, w=w, value=value);
-        self.rect = super().rect;
-        self.y = super().y;
-        self.x = super().x;
-        self.h = super().h;
-        self.w = super().w;
+        self._super = super();
+        self._super.__init__(y=y, x=x, h=1, w=w, value=value);
+        self.rect = self._super.rect;
+        self.y = self._super.y;
+        self.x = self._super.x;
+        self.h = self._super.h;
+        self.w = self._super.w;
         self._rect = (y, x, 1, w);
         self._val = value;
         self._style = colorstyle;
