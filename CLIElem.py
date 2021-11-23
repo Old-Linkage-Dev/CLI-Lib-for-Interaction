@@ -298,6 +298,7 @@ class ElemLabel(BSElem):
             self._drawraw = str_trim_ac(_s, self.w);
         else:
             self._drawraw = '';
+        return;
     
     @property
     def rect(self) -> tuple:
