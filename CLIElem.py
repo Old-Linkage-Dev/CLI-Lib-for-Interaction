@@ -26,14 +26,14 @@ class Elem:
     An elem is an element on a page, a scene, an UI, etc;
     """
 
-    def __init__(self, y:int = 0, x:int = 0, h:int = 0, w:int = 0) -> None:
+    def __init__(self, y:int = 0, x:int = 0, h:int = 0, w:int = 0, value:any = None) -> None:
         """
         Init to the elem;
         y, x: relative coordinate of this elem;
         h, w: size of this elem;
         """
         self._rect = (y, x, h, w);
-        self._val = None;
+        self._val = value;
         return;
     
     @property
