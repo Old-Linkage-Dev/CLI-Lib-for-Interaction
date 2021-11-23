@@ -21,9 +21,10 @@ __all__ = [
     "str_cut_return",
     "str_split_width",
     "str_split_return",
-    "str_al",
-    "str_ar",
-    "str_ac",
+    "str_trim_at",
+    "str_trim_al",
+    "str_trim_ar",
+    "str_trim_ac",
     "get_style",
     "STYLE_CLASSIC",
 ];
@@ -79,7 +80,7 @@ def str_split_return(s):
         _splt.append(_s);
     return _splt;
 
-def str_trim_widthat(s, p1, p2):
+def str_trim_at(s, p1, p2):
     if p1 < p2:
         _w = 0;
         _i = 0;
@@ -100,7 +101,7 @@ def str_trim_widthat(s, p1, p2):
     else:
         return '';
 
-def str_al(s, w):
+def str_trim_al(s, w):
     if str_width(s) <= w:
         _e = w - str_width(s);
         return s + ' ' * _e;
@@ -109,7 +110,7 @@ def str_al(s, w):
         _e = w - str_width(s);
         return s + ' ' * _e;
 
-def str_ar(s, w):
+def str_trim_ar(s, w):
     if str_width(s) <= w:
         _e = w - str_width(s);
         return ' ' * _e + s;
@@ -118,7 +119,7 @@ def str_ar(s, w):
         _e = w - str_width(s);
         return ' ' * _e + str_rev(s);
 
-def str_ac(s, w):
+def str_trim_ac(s, w):
     if str_width(s) <= w:
         _e = w - str_width(s);
         _el = round(_e / 2);
