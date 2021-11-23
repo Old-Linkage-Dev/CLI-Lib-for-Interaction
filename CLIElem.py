@@ -49,6 +49,54 @@ class Elem:
         return;
 
     @property
+    def y(self) -> tuple:
+        """
+        The relative coordinate y of this elem;
+        """
+        return self._rect[0];
+    
+    @y.setter
+    def y(self, val:int) -> None:
+        self._rect = (val, self._rect[1], self._rect[2], self._rect[3]);
+        return;
+    
+    @property
+    def x(self) -> tuple:
+        """
+        The relative coordinate x of this elem;
+        """
+        return self._rect[1];
+    
+    @x.setter
+    def x(self, val:int) -> None:
+        self._rect = (self._rect[0], val, self._rect[2], self._rect[3]);
+        return;
+    
+    @property
+    def h(self) -> tuple:
+        """
+        The height of this elem;
+        """
+        return self._rect[2];
+    
+    @h.setter
+    def h(self, val:int) -> None:
+        self._rect = (self._rect[0], self._rect[1], val, self._rect[3]);
+        return;
+    
+    @property
+    def w(self) -> tuple:
+        """
+        The width of this elem;
+        """
+        return self._rect[3];
+    
+    @w.setter
+    def w(self, val:int) -> None:
+        self._rect = (self._rect[0], self._rect[1], self._rect[2], val);
+        return;
+    
+    @property
     def value(self) -> any:
         """
         The value of this elem;
