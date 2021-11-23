@@ -190,16 +190,6 @@ class BSElem(Elem):
     def __init__(self, y: int = 1, x: int = 1, h: int = 0, w: int = 0, value: any = None, boxstyle: str = '', colorstyle: dict = STYLE_CLASSIC) -> None:
         self._Elem = super();
         self._Elem.__init__(y = y, x = x, h = h, w = w, value = value);
-        self.rect = self._Elem.rect;
-        self.y = self._Elem.y;
-        self.x = self._Elem.x;
-        self.h = self._Elem.h;
-        self.w = self._Elem.w;
-        self.y0 = self._Elem.y0;
-        self.x0 = self._Elem.x0;
-        self.y1 = self._Elem.y1;
-        self.x1 = self._Elem.x1;
-        self.value = self._Elem.value;
         self._boxstyle = boxstyle;
         self._colstyle = colorstyle;
         self._boxstyle_cc = '';
@@ -281,24 +271,10 @@ class BSElem(Elem):
 
 
 
-class ElemLabel(Elem):
-    
-    def __init__(self, y: int = 1, x: int = 1, h: int = 1, w: int = 0, value: str = '', align: str = 'l', autoscale: bool = False, colorstyle: dict = STYLE_CLASSIC) -> None:
-        self._super = super();
-        self._super.__init__(y = y, x = x, h = 1, w = w, value = value);
-        self.rect = self._super.rect;
-        self.y = self._super.y;
-        self.x = self._super.x;
-        self.h = self._super.h;
-        self.w = self._super.w;
-        self.y0 = self._super.y0;
-        self.x0 = self._super.x0;
-        self.y1 = self._super.y1;
-        self.x1 = self._super.x1;
+        self._BSElem = super();
+        self._BSElem.__init__(y = y, x = x, h = 1, w = w, value = value, boxstyle = boxstyle, colorstyle = colorstyle);
         self._rect = (y, x, 1, w);
-        self._val = value;
         self._autoscale = autoscale;
-        self._style = colorstyle;
         if align in ('l', 'c', 'r'):
             self._align = align;
         else:
@@ -355,15 +331,6 @@ class ElemLabel(Elem):
     def autoscale(self, val:bool) -> None:
         self._autoscale = val;
         self._update_drawraw();
-        return;
-
-    @property
-    def colorstyle(self) -> dict:
-        return self._style;
-    
-    @colorstyle.setter
-    def colorstyle(self, val:dict) -> None:
-        self._style = val;
         return;
 
     def draw(self, y:int = 1, x:int = 1, h:int = 0, w:int = 0, f:bool = False) -> str:
