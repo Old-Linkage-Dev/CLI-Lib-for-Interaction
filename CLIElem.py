@@ -151,15 +151,18 @@ class ElemText(Elem):
             self._align = align;
         else:
             self._align = 'l';
+        self._update_drawraw();
+    
+    def _update_drawraw(self):
         if self._autoscale:
-            self._rect = (self._rect[0], self._rect[1], 1, str_width(self._val));
-            self._drawraw = self._val;
+            self._rect = (self._rect[0], self._rect[1], 1, str_width(str_cut_return(self._val)));
+            self._drawraw = str_cut_return(self._val);
         elif self._align == 'l':
-            self._drawraw = str_al(self._val, self._rect[3]);
+            self._drawraw = str_al(str_cut_return(self._val), self.w);
         elif self._align == 'r':
-            self._drawraw = str_ar(self._val, self._rect[3]);
+            self._drawraw = str_ar(str_cut_return(self._val), self.w);
         elif self._align == 'c':
-            self._drawraw = str_ac(self._val, self._rect[3]);
+            self._drawraw = str_ac(str_cut_return(self._val), self.w);
         else:
             self._drawraw = '';
     
@@ -173,17 +176,7 @@ class ElemText(Elem):
     @value.setter
     def value(self, val:str) -> None:
         self._val = val;
-        if self._autoscale:
-            self._rect = (self._rect[0], self._rect[1], 1, str_width(self._val));
-            self._drawraw = self._val;
-        elif self._align == 'l':
-            self._drawraw = str_al(self._val, self._rect[3]);
-        elif self._align == 'r':
-            self._drawraw = str_ar(self._val, self._rect[3]);
-        elif self._align == 'c':
-            self._drawraw = str_ac(self._val, self._rect[3]);
-        else:
-            self._drawraw = '';
+        self._update_drawraw();
         return;
     
     @property
@@ -197,16 +190,7 @@ class ElemText(Elem):
     def align(self, val:str) -> None:
         if val in ('l', 'c', 'r'):
             self._align = val;
-        if self._autoscale:
-            pass;
-        elif self._align == 'l':
-            self._drawraw = str_al(self._val, self._rect[3]);
-        elif self._align == 'r':
-            self._drawraw = str_ar(self._val, self._rect[3]);
-        elif self._align == 'c':
-            self._drawraw = str_ac(self._val, self._rect[3]);
-        else:
-            self._drawraw = '';
+        self._update_drawraw();
         return;
     
     def draw(self, y:int, x:int, h:int, w:int, f:bool) -> str:
