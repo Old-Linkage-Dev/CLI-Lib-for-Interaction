@@ -139,8 +139,15 @@ def putstr(y, x, s ,*args):
     return CHRf_CSI_CUP(y, x) + CHRf_CSI_SGR(0, *args) + s;
 
 STYLE_CLASSIC = {
-    "NORMAL" : [T_BBLACK, T_BLBLACK, T_WHITE, T_LWHITE],
-    "NONACT" : [T_BBLUE, T_BLBLUE, T_WHITE, T_LWHITE],
-    "INTERACT" : [T_BBLUE, T_BLBLUE, T_CYAN, T_LCYAN],
-    "FOCUSED" : [T_BCYAN, T_BLCYAN, T_BLUE, T_LBLUE],
+    "NORMAL"    : [T_BBLACK, T_WHITE],
+    "NONACT"    : [T_BBLUE, T_WHITE],
+    "INTERACT"  : [T_BBLUE, T_CYAN],
+    "FOCUSED"   : [T_BCYAN, T_BLUE],
+}
+
+STYLE_CLASSIC_LIGHT = {
+    "NORMAL"    : [T_BLBLACK, T_LWHITE],
+    "NONACT"    : [T_BLBLUE, T_LWHITE],
+    "INTERACT"  : [T_BLBLUE, T_LCYAN],
+    "FOCUSED"   : [T_BLCYAN, T_LBLUE],
 }
