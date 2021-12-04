@@ -1,13 +1,15 @@
 
 # -*- coding: UTF-8 -*-
 
-from . import CLIMain;
+from . import CLICommandInterface;
+from . import CLIGraphInterface;
 from . import CLIRes;
 from . import CLIElem;
 from . import CLIResLoad;
 from . import CLIDraw;
 
-from .CLIMain import *;
+from .CLICommandInterface import *;
+from .CLIGraphInterface import *;
 from .CLIRes import *;
 from .CLIElem import *;
 from .CLIResLoad import *;
@@ -19,14 +21,16 @@ from ..OLDLog import logger;
 
 __all__ = (
     [
-        "CLIMain",
+        "CLICommandInterface",
+        "CLIGraphInterface",
         "CLIRes",
         "CLIElem",
         "CLIResLoad",
         "CLIDraw",
         "logger",
     ] +
-    CLIMain.__all__ +
+    CLICommandInterface.__all__ +
+    CLIGraphInterface.__all__ +
     CLIRes.__all__ +
     CLIElem.__all__ +
     CLIResLoad.__all__ +
