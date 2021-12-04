@@ -65,7 +65,7 @@ class Res:
         """
         return;
     
-    def draw(self, y: int = 1, x: int = 1, h: int = ressize[0], w: int = ressize[1]) -> str:
+    def draw(self, y: int = 1, x: int = 1, h: int = 0, w: int = 0) -> str:
         """
         Called to get the draw flow of the res;
         return the string to draw the res;
